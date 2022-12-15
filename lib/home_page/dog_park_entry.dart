@@ -18,6 +18,8 @@ class DogParkEntry extends StatelessWidget {
     const double sideMargin = 4.0;
     const double topBottomMargin = 2.0;
 
+    const double textSideMargin = 10.0;
+
     return Container(
       margin: const EdgeInsets.only(
         left: sideMargin,
@@ -25,34 +27,39 @@ class DogParkEntry extends StatelessWidget {
         top: topBottomMargin,
         bottom: topBottomMargin,
       ),
+      width: double.infinity,
+      height: 48.0,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black45),
         borderRadius: BorderRadius.circular(8.0),
-        color: Colors.black12,
+        color: Colors.white,
       ),
-      child: SizedBox(
-        width: double.infinity,
-        height: 32.0,
-        child: Row(
-          children: [
-            Column(
-              children: const [
-                Icon(Icons.arrow_upward, color: Colors.black, size: 12),
-                Icon(Icons.arrow_downward, color: Colors.black, size: 12)
-              ],
-            ),
-            Column(
+      child: Row(
+        children: [
+          SizedBox(
+            width: 24,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const Icon(Icons.arrow_upward, color: Colors.black, size: 12),
                 Text((likeCount - dislikeCount).toString()),
+                const Icon(Icons.arrow_downward, color: Colors.black, size: 12),
               ],
             ),
-            Column(
-              children: [
-                Text(name),
-              ],
-            ),
-          ],
-        ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(
+                  left: textSideMargin,
+                  right: textSideMargin,
+                ),
+                child: Text(name),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
