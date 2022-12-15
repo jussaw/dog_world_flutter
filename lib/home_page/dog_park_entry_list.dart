@@ -11,6 +11,7 @@ class DogParkEntryList extends StatelessWidget {
       width: double.infinity,
       child: Column(
         children: const [
+          // Replace with real data later
           ...dogParkEntryList
         ],
       ),
