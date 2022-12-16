@@ -30,7 +30,6 @@ const DogParkEntry dogParkEntry4 = DogParkEntry(
   dislikeCount: 22,
 );
 
-// DogParkEntry[] DogParkEntryList = [dogParkEntry1, dogParkEntry2, dogParkEntry3, dogParkEntry4];
 const List<DogParkEntry> dogParkEntryList = [
   dogParkEntry1,
   dogParkEntry2,
