@@ -3,17 +3,22 @@ import 'package:dog_world/models/dog_park_details_model.dart';
 import 'package:flutter/material.dart';
 
 class DogParkEntry extends StatelessWidget {
-  const DogParkEntry(
-      {super.key,
-      required this.name,
-      required this.description,
-      required this.likeCount,
-      required this.dislikeCount});
+  const DogParkEntry({
+    super.key,
+    required this.name,
+    required this.author,
+    required this.description,
+    required this.likeCount,
+    required this.dislikeCount,
+    required this.comments,
+  });
 
   final String name;
+  final String author;
   final String description;
   final int likeCount;
   final int dislikeCount;
+  final List<String> comments;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +28,11 @@ class DogParkEntry extends StatelessWidget {
 
     DogParkDetailsModel dogParkDetailsData = DogParkDetailsModel(
       name: name,
+      author: author,
       description: description,
       likeCount: likeCount,
       dislikeCount: dislikeCount,
+      comments: comments,
     );
 
     return Container(
