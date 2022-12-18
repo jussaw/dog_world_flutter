@@ -1,4 +1,4 @@
-import 'package:dog_world/models/dog_park_details_model.dart';
+import 'package:dog_world/dog_park_info/domain/models/dog_park_details_model.dart';
 import 'package:flutter/material.dart';
 
 class DogParkDetails extends StatelessWidget {
@@ -34,28 +34,28 @@ class DogParkDetails extends StatelessWidget {
                 border: Border.all(color: Colors.black),
                 borderRadius: BorderRadius.circular(borderRadius),
               ),
-              child: Text(dogParkDetailsData.description),
+              // child: Text(dogParkDetailsData.description),
             ),
           ),
-          Text("--------COMMENTS--------"),
-          ...dogParkDetailsData.comments.map((comment) {
-            return SizedBox(
-              width: double.infinity,
-              child: Container(
-                alignment: Alignment.center,
-                margin: const EdgeInsets.all(margin),
-                padding: const EdgeInsets.all(padding),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(borderRadius),
-                ),
-                child: Text(
-                  style: const TextStyle(fontSize: 6),
-                  comment,
-                ),
-              ),
-            );
-          }),
+          const Text("--------COMMENTS--------"),
+          // ...dogParkDetailsData.comments.map((comment) {
+          //   return SizedBox(
+          //     width: double.infinity,
+          //     child: Container(
+          //       alignment: Alignment.center,
+          //       margin: const EdgeInsets.all(margin),
+          //       padding: const EdgeInsets.all(padding),
+          //       decoration: BoxDecoration(
+          //         border: Border.all(color: Colors.black),
+          //         borderRadius: BorderRadius.circular(borderRadius),
+          //       ),
+          //       child: Text(
+          //         style: const TextStyle(fontSize: 6),
+          //         comment,
+          //       ),
+          //     ),
+          //   );
+          // ),
         ],
       ),
     );

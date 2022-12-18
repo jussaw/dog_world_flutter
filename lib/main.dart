@@ -1,5 +1,5 @@
 import 'package:dog_world/constants.dart';
-import 'package:dog_world/home_page/home_page.dart';
+import 'package:dog_world/home_page/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {

@@ -1,5 +1,4 @@
-import 'package:dog_world/home_page/dog_park_entry.dart';
-import 'package:dog_world/home_page/dog_park_entry_test_data.dart';
+import 'package:dog_world/dog_parks_list/dog_park_entry_test_data.dart';
 import 'package:flutter/material.dart';
 
 class DogParkEntryList extends StatelessWidget {
