@@ -1,5 +1,5 @@
 import 'package:dog_world/constants.dart';
-import 'package:dog_world/dog_parks_list/widgets/dog_park_entry_list.dart';
+import 'package:dog_world/catalog/providers/catalog.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(appName),
       ),
-      body: const DogParkEntryList(),
+      body: const Catalog(),
     );
   }
 }
