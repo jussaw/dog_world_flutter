@@ -1,5 +1,5 @@
 import 'package:dog_world/constants.dart';
-import 'package:dog_world/home_page/screens/home_page.dart';
+import 'package:dog_world/main_page/screens/main_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(title: 'DogWorld home page'),
+      home: const MainPage(title: 'DogWorld home page'),
     );
   }
 }

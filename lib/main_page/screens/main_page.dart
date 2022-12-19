@@ -2,8 +2,8 @@ import 'package:dog_world/constants.dart';
 import 'package:dog_world/catalog/providers/catalog.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({
+class MainPage extends StatelessWidget {
+  const MainPage({
     super.key,
     required this.title,
   });
