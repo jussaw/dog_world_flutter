@@ -51,11 +51,18 @@ class _ParkCatalogState extends State<ParkCatalog> {
               (BuildContext context, AsyncSnapshot<DogParkListModel> snapshot) {
             Widget child;
             if (snapshot.hasData) {
-              child = ListView(
-                children: [
-                  ..._dogParkEntryModelList.map((dogParkEntryModel) =>
-                      ParkCatalogEntry(model: dogParkEntryModel))
-                ],
+              child = ListView.separated(
+                itemCount: _dogParkEntryModelList.length,
+                separatorBuilder: (context, index) {
+                  return const Divider(
+                    color: Colors.black,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  return ParkCatalogEntry(
+                    model: _dogParkEntryModelList[index],
+                  );
+                },
               );
               // TODO: Update error message
             } else if (snapshot.hasError) {

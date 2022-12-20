@@ -12,8 +12,6 @@ class ParkCatalogEntry extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double sideMargin = 4.0;
-    const double topBottomMargin = 2.0;
     const double textSideMargin = 10.0;
 
     return TextButton(
@@ -30,20 +28,9 @@ class ParkCatalogEntry extends StatelessWidget {
           ),
         ),
       },
-      child: Container(
-        margin: const EdgeInsets.only(
-          left: sideMargin,
-          right: sideMargin,
-          top: topBottomMargin,
-          bottom: topBottomMargin,
-        ),
+      child: SizedBox(
         width: double.infinity,
         height: 48.0,
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.black45),
-          borderRadius: BorderRadius.circular(8.0),
-          color: Colors.white,
-        ),
         child: Row(
           children: [
             SizedBox(
