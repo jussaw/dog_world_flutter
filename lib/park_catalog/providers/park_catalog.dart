@@ -1,17 +1,17 @@
-import 'package:dog_world/catalog/domain/models/dog_park_entry_list_model.dart';
-import 'package:dog_world/catalog/domain/models/dog_park_entry_model.dart';
-import 'package:dog_world/catalog/domain/services/catalog_service.dart';
-import 'package:dog_world/catalog/widgets/catalog_entry.dart';
+import 'package:dog_world/park_catalog/domain/models/dog_park_entry_list_model.dart';
+import 'package:dog_world/park_catalog/domain/models/dog_park_entry_model.dart';
+import 'package:dog_world/park_catalog/domain/services/catalog_service.dart';
+import 'package:dog_world/park_catalog/widgets/park_catalog_entry.dart';
 import 'package:flutter/material.dart';
 
-class Catalog extends StatefulWidget {
-  const Catalog({super.key});
+class ParkCatalog extends StatefulWidget {
+  const ParkCatalog({super.key});
 
   @override
-  State<Catalog> createState() => _CatalogState();
+  State<ParkCatalog> createState() => _ParkCatalogState();
 }
 
-class _CatalogState extends State<Catalog> {
+class _ParkCatalogState extends State<ParkCatalog> {
   final CatalogService _service = CatalogService();
   late List<DogParkEntryModel> _dogParkEntryModelList;
 
@@ -54,7 +54,7 @@ class _CatalogState extends State<Catalog> {
               child = ListView(
                 children: [
                   ..._dogParkEntryModelList.map((dogParkEntryModel) =>
-                      CatalogEntry(model: dogParkEntryModel))
+                      ParkCatalogEntry(model: dogParkEntryModel))
                 ],
               );
               // TODO: Update error message

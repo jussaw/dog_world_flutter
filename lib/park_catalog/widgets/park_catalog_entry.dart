@@ -1,9 +1,9 @@
-import 'package:dog_world/catalog/domain/models/dog_park_entry_model.dart';
+import 'package:dog_world/park_catalog/domain/models/dog_park_entry_model.dart';
 import 'package:dog_world/dog_park_info/providers/dog_park_info.dart';
 import 'package:flutter/material.dart';
 
-class CatalogEntry extends StatelessWidget {
-  const CatalogEntry({
+class ParkCatalogEntry extends StatelessWidget {
+  const ParkCatalogEntry({
     required this.model,
     super.key,
   });
@@ -23,7 +23,10 @@ class CatalogEntry extends StatelessWidget {
       onPressed: () => {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => DogParkInfo(parkId: model.parkId),
+            builder: (context) => DogParkInfo(
+              parkId: model.parkId,
+              parkName: model.parkName,
+            ),
           ),
         ),
       },
@@ -57,6 +60,7 @@ class CatalogEntry extends StatelessWidget {
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
                   padding: const EdgeInsets.only(
@@ -64,6 +68,16 @@ class CatalogEntry extends StatelessWidget {
                     right: textSideMargin,
                   ),
                   child: Text(model.parkName),
+                ),
+                Container(
+                  padding: const EdgeInsets.only(
+                    left: textSideMargin,
+                    right: textSideMargin,
+                  ),
+                  child: Text(
+                    'author: ${model.author}',
+                    style: const TextStyle(fontSize: 10),
+                  ),
                 ),
               ],
             ),

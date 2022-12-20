@@ -8,9 +8,11 @@ class DogParkInfo extends StatefulWidget {
   const DogParkInfo({
     super.key,
     required this.parkId,
+    required this.parkName,
   });
 
   final int parkId;
+  final String parkName;
 
   @override
   State<DogParkInfo> createState() => _DogParkInfoState();
@@ -41,9 +43,11 @@ class _DogParkInfoState extends State<DogParkInfo> {
     return Scaffold(
       appBar: AppBar(
         leading: ElevatedButton(
-          child: const Icon(Icons.arrow_back),
+          style: ElevatedButton.styleFrom(elevation: 0),
           onPressed: () => {Navigator.of(context).pop()},
+          child: const Icon(Icons.arrow_back),
         ),
+        title: Text(widget.parkName),
       ),
       body: FutureBuilder(
         future: dogParkInfoModelFuture,
@@ -80,18 +84,22 @@ class _DogParkInfoState extends State<DogParkInfo> {
             );
             // TODO: Update progress message
           } else {
-            child = Column(
-              children: const [
-                SizedBox(
-                  width: 60,
-                  height: 60,
-                  child: CircularProgressIndicator(),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 16),
-                  child: Text('Awaiting result...'),
-                ),
-              ],
+            child = Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: CircularProgressIndicator(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: Text('Awaiting result...'),
+                  ),
+                ],
+              ),
             );
           }
           return child;

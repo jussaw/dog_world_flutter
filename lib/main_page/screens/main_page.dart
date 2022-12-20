@@ -1,7 +1,8 @@
 import 'package:dog_world/account/widgets/account.dart';
 import 'package:dog_world/constants.dart';
-import 'package:dog_world/catalog/providers/catalog.dart';
+import 'package:dog_world/park_catalog/providers/park_catalog.dart';
 import 'package:dog_world/main_page/widgets/mp_bottom_nav_bar.dart';
+import 'package:dog_world/main_page/widgets/mp_side_menu.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
@@ -17,13 +18,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  Widget body = const Catalog();
+  Widget body = const ParkCatalog();
 
   void _onItemTapped(int index) {
     setState(() {
       switch (index) {
         case 0:
-          body = const Catalog();
+          body = const ParkCatalog();
           break;
         case 1:
           body = const Account();
@@ -35,6 +36,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MpSideMenu(),
       appBar: AppBar(
         title: const Text(appName),
       ),

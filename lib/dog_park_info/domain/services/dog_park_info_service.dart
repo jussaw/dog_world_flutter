@@ -11,6 +11,8 @@ class DogParkInfoService {
       HttpDogParkInfoRepository(client: client);
 
   Future<DogParkInfoModel> getDogParkInfo(int parkId) async {
+    // TODO: Remove delay. Used for testing loading screen
+    await Future.delayed(const Duration(seconds: 2));
     return repository.getDogParkInfo(parkId);
   }
 }
