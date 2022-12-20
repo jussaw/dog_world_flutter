@@ -19,18 +19,16 @@ class CommentSection extends StatelessWidget {
       children: [
         // TODO: Remove later
         const Text("----------------COMMENTS----------------"),
-        ...comments.map(
-          (comment) => Container(
-            alignment: Alignment.center,
-            margin: const EdgeInsets.all(margin),
-            padding: const EdgeInsets.all(padding),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black),
-              borderRadius: BorderRadius.circular(borderRadius),
-            ),
-            child: Text(comment.body),
-          ),
-        ),
+        ...comments.map((comment) => Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.all(margin),
+              padding: const EdgeInsets.all(padding),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(borderRadius),
+              ),
+              child: Text(comment.body),
+            )),
       ],
     );
   }
