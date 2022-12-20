@@ -51,16 +51,15 @@ class _CatalogState extends State<Catalog> {
               (BuildContext context, AsyncSnapshot<DogParkListModel> snapshot) {
             Widget child;
             if (snapshot.hasData) {
-              child = ListView(children: [
-                ..._dogParkEntryModelList
-                    .map((dogParkEntryModel) =>
-                        CatalogEntry(model: dogParkEntryModel))
-                    .toList()
-              ]);
+              child = ListView(
+                children: [
+                  ..._dogParkEntryModelList.map((dogParkEntryModel) =>
+                      CatalogEntry(model: dogParkEntryModel))
+                ],
+              );
               // TODO: Update error message
             } else if (snapshot.hasError) {
               child = Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   const Icon(
                     Icons.error_outline,
