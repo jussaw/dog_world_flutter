@@ -15,21 +15,28 @@ class CommentSection extends StatelessWidget {
     const double padding = 5.0;
     const double borderRadius = 8.0;
 
-    return Column(
-      children: [
-        // TODO: Remove later
-        const Text("----------------COMMENTS----------------"),
-        ...comments.map((comment) => Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.all(margin),
-              padding: const EdgeInsets.all(padding),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.black),
-                borderRadius: BorderRadius.circular(borderRadius),
-              ),
-              child: Text(comment.body),
-            )),
-      ],
+    return Expanded(
+      child: ListView(
+        children: [
+          // TODO: Remove later
+          const Text(
+            "----------------COMMENTS----------------",
+            textAlign: TextAlign.center,
+          ),
+          ...comments
+              .map((comment) => Container(
+                    alignment: Alignment.center,
+                    margin: const EdgeInsets.all(margin),
+                    padding: const EdgeInsets.all(padding),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black),
+                      borderRadius: BorderRadius.circular(borderRadius),
+                    ),
+                    child: Text(comment.body),
+                  ))
+              .toList(),
+        ],
+      ),
     );
   }
 }

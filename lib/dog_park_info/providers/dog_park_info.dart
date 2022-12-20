@@ -49,51 +49,52 @@ class _DogParkInfoState extends State<DogParkInfo> {
         future: dogParkInfoModelFuture,
         builder:
             (BuildContext context, AsyncSnapshot<DogParkInfoModel> snapshot) {
-          List<Widget> children;
+          Widget child;
           if (snapshot.hasData) {
-            children = [
-              Column(
-                children: [
-                  ParkInfo(
-                    body: _dogParkInfoModel.body,
-                    author: _dogParkInfoModel.authorName,
-                  ),
-                  CommentSection(
-                    comments: _dogParkInfoModel.comments,
-                  ),
-                ],
-              ),
-            ];
+            child = Column(
+              children: [
+                ParkInfo(
+                  body: _dogParkInfoModel.body,
+                  author: _dogParkInfoModel.authorName,
+                ),
+                CommentSection(
+                  comments: _dogParkInfoModel.comments,
+                ),
+              ],
+            );
+
             // TODO: Update error message
           } else if (snapshot.hasError) {
-            children = <Widget>[
-              const Icon(
-                Icons.error_outline,
-                color: Colors.red,
-                size: 60,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text('Error: ${snapshot.error}'),
-              ),
-            ];
+            child = Column(
+              children: [
+                const Icon(
+                  Icons.error_outline,
+                  color: Colors.red,
+                  size: 60,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: Text('Error: ${snapshot.error}'),
+                ),
+              ],
+            );
             // TODO: Update progress message
           } else {
-            children = const <Widget>[
-              SizedBox(
-                width: 60,
-                height: 60,
-                child: CircularProgressIndicator(),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text('Awaiting result...'),
-              ),
-            ];
+            child = Column(
+              children: const [
+                SizedBox(
+                  width: 60,
+                  height: 60,
+                  child: CircularProgressIndicator(),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Text('Awaiting result...'),
+                ),
+              ],
+            );
           }
-          return Column(
-            children: children,
-          );
+          return child;
         },
       ),
     );
