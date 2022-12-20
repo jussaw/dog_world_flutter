@@ -1,4 +1,4 @@
-import 'package:dog_world/catalog/domain/models/dog_park_entry_model.dart';
+import 'package:dog_world/park_catalog/domain/models/dog_park_entry_model.dart';
 
 DogParkEntryModel dogParkEntry1 = DogParkEntryModel(
   parkName: "Denver Park",
