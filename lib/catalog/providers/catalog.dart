@@ -15,7 +15,7 @@ class _CatalogState extends State<Catalog> {
   final CatalogService _service = CatalogService();
   late List<DogParkEntryModel> _dogParkEntryModelList;
 
-  late Future<DogParkListModel> _dogParkEntryModelListFuture =
+  late final Future<DogParkListModel> _dogParkEntryModelListFuture =
       _service.getDogParks();
 
   @override
@@ -25,7 +25,7 @@ class _CatalogState extends State<Catalog> {
   }
 
   Future _refresh() async {
-    DogParkListModel dogParkListModel = await _service.getDogParks();
+    DogParkListModel dogParkListModel = await _dogParkEntryModelListFuture;
     setState(() {
       _dogParkEntryModelList = dogParkListModel.dogParkList;
     });
@@ -33,20 +33,6 @@ class _CatalogState extends State<Catalog> {
 
   @override
   Widget build(BuildContext context) {
-    // return SizedBox(
-    //   width: double.infinity,
-    //   child: Column(
-    //     children: [
-    //       // TODO: Replace with list from state
-    //       // ...dogParkEntryList
-    //       ..._dogParkEntryModelList
-    //           .map(
-    //             (dogParkEntryModel) => CatalogEntry(model: dogParkEntryModel),
-    //           )
-    //           .toList()
-    //     ],
-    //   ),
-    // );
     return SizedBox(
       width: double.infinity,
       child: FutureBuilder(
@@ -63,6 +49,7 @@ class _CatalogState extends State<Catalog> {
                   )
                   .toList()
             ];
+            // TODO: Update error message
           } else if (snapshot.hasError) {
             children = <Widget>[
               const Icon(
@@ -75,6 +62,7 @@ class _CatalogState extends State<Catalog> {
                 child: Text('Error: ${snapshot.error}'),
               ),
             ];
+            // TODO: Update progress message
           } else {
             children = const <Widget>[
               SizedBox(

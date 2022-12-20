@@ -8,12 +8,12 @@ class DogParkEntryModel {
     required this.dislikeCount,
   });
 
-  String parkName;
-  int parkId;
-  String author;
-  int authorId;
-  int likeCount;
-  int dislikeCount;
+  final String parkName;
+  final int parkId;
+  final String author;
+  final int authorId;
+  final int likeCount;
+  final int dislikeCount;
 
   factory DogParkEntryModel.fromJson(Map<String, dynamic> json) {
     return DogParkEntryModel(
