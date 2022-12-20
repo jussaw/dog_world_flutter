@@ -25,61 +25,74 @@ class _CatalogState extends State<Catalog> {
   }
 
   Future _refresh() async {
-    DogParkListModel dogParkListModel = await _dogParkEntryModelListFuture;
+    DogParkListModel dogParkListModel = await _service.getDogParks();
     setState(() {
       _dogParkEntryModelList = dogParkListModel.dogParkList;
     });
   }
 
+  // TODO: Implement update function
+  // Future _appendToList() async {
+  //   DogParkListModel dogParkListModel = await _service.getNewParks();
+  //   setState((() {
+  //     _dogParkEntryModelList.addAll(dogParkListModel.dogParkList);
+  //   }));
+  // }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: FutureBuilder(
-        future: _dogParkEntryModelListFuture,
-        builder:
-            (BuildContext context, AsyncSnapshot<DogParkListModel> snapshot) {
-          List<Widget> children;
-          if (snapshot.hasData) {
-            children = [
-              ..._dogParkEntryModelList
-                  .map(
-                    (dogParkEntryModel) =>
-                        CatalogEntry(model: dogParkEntryModel),
-                  )
-                  .toList()
-            ];
-            // TODO: Update error message
-          } else if (snapshot.hasError) {
-            children = <Widget>[
-              const Icon(
-                Icons.error_outline,
-                color: Colors.red,
-                size: 60,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
-                child: Text('Error: ${snapshot.error}'),
-              ),
-            ];
-            // TODO: Update progress message
-          } else {
-            children = const <Widget>[
-              SizedBox(
-                width: 60,
-                height: 60,
-                child: CircularProgressIndicator(),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text('Awaiting result...'),
-              ),
-            ];
-          }
-          return Column(
-            children: children,
-          );
-        },
+      child: RefreshIndicator(
+        onRefresh: _refresh,
+        child: FutureBuilder(
+          future: _dogParkEntryModelListFuture,
+          builder:
+              (BuildContext context, AsyncSnapshot<DogParkListModel> snapshot) {
+            Widget child;
+            if (snapshot.hasData) {
+              child = ListView(children: [
+                ..._dogParkEntryModelList
+                    .map((dogParkEntryModel) =>
+                        CatalogEntry(model: dogParkEntryModel))
+                    .toList()
+              ]);
+              // TODO: Update error message
+            } else if (snapshot.hasError) {
+              child = Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.error_outline,
+                    color: Colors.red,
+                    size: 60,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 16),
+                    child: Text('Error: ${snapshot.error}'),
+                  ),
+                ],
+              );
+              // TODO: Update progress message
+            } else {
+              child = Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: CircularProgressIndicator(),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 16),
+                    child: Text('Awaiting result...'),
+                  ),
+                ],
+              );
+            }
+            return child;
+          },
+        ),
       ),
     );
   }
