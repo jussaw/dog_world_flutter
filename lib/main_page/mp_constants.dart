@@ -1,0 +1,1 @@
+enum MpFooterViews { parks, account }
