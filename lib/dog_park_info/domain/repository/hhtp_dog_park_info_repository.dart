@@ -14,10 +14,17 @@ class HttpDogParkInfoRepository extends DogParkInfoRepository {
 
   @override
   Future<DogParkInfoModel> getDogParkInfo(int parkId) async {
-    final headers = {'parkid': parkId.toString()};
+    // final headers = {'parkid': parkId.toString()};
     final response = await http.get(
-      Uri.http(dogParksServiceURL, getDogParkInfoApiPath),
-      headers: headers,
+      // Uri.http(dogParksServiceURL, getDogParkInfoApiPath),
+      // headers: headers,
+      // );
+      Uri(
+          scheme: 'http',
+          host: dogParksServiceURL,
+          port: dogParksServicePort,
+          path: getDogParkInfoApiPath,
+          queryParameters: {'parkId': parkId.toString()}),
     );
 
     if (response.statusCode == 200) {

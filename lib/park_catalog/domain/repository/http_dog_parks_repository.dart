@@ -12,8 +12,15 @@ class HttpDogParksRepository extends DogParksRepository {
 
   @override
   Future<DogParkListModel> getDogParks() async {
-    final response =
-        await http.get(Uri.http(dogParksServiceURL, getDogParksApiPath));
+    final response = await http.get(
+      // Uri.http(dogParksServiceURL, getDogParksApiPath),
+      Uri(
+        scheme: 'http',
+        host: dogParksServiceURL,
+        port: dogParksServicePort,
+        path: getDogParksApiPath,
+      ),
+    );
 
     if (response.statusCode == 200) {
       return DogParkListModel.fromJson(jsonDecode(response.body));
