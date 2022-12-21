@@ -14,9 +14,9 @@ class MainPage extends StatefulWidget {
   });
 
   final String title;
-  final Map<int, MpFooterViews> footerViewsMap = {
-    0: MpFooterViews.parks,
-    1: MpFooterViews.account,
+  final Map<int, MpFooterView> footerViewsMap = {
+    0: MpFooterView.parks,
+    1: MpFooterView.account,
   };
 
   @override
@@ -25,18 +25,18 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   Widget body = const ParkCatalog();
-  MpFooterViews currentView = MpFooterViews.parks;
+  MpFooterView currentView = MpFooterView.parks;
 
   void _onItemTapped(int index) {
     setState(() {
       switch (index) {
         case 0:
           body = const ParkCatalog();
-          currentView = MpFooterViews.parks;
+          currentView = MpFooterView.parks;
           break;
         case 1:
           body = const Account();
-          currentView = MpFooterViews.account;
+          currentView = MpFooterView.account;
           break;
       }
     });

@@ -1,1 +1,1 @@
-enum MpFooterViews { parks, account }
+enum MpFooterView { parks, account }
