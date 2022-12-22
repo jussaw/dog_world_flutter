@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:dog_world/dog_park_info/domain/models/dog_park_info_model.dart';
 import 'package:dog_world/dog_park_info/domain/repository/dog_park_info_repository.dart';
-import 'package:dog_world/constants.dart';
+import 'package:dog_world/global/constants.dart';
 import 'package:http/http.dart' as http;
 
 class HttpDogParkInfoRepository extends DogParkInfoRepository {

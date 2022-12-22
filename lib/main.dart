@@ -1,4 +1,4 @@
-import 'package:dog_world/constants.dart';
+import 'package:dog_world/global/constants.dart';
 import 'package:dog_world/main_page/screens/main_page.dart';
 import 'package:flutter/material.dart';
 

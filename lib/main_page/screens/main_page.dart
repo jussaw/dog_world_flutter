@@ -1,5 +1,5 @@
 import 'package:dog_world/account/widgets/account.dart';
-import 'package:dog_world/constants.dart';
+import 'package:dog_world/global/constants.dart';
 import 'package:dog_world/main_page/mp_constants.dart';
 import 'package:dog_world/main_page/widgets/mp_search.dart';
 import 'package:dog_world/park_catalog/providers/park_catalog.dart';
