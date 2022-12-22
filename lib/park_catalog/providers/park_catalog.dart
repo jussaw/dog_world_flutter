@@ -1,3 +1,5 @@
+import 'package:dog_world/global/widgets/error_screen.dart';
+import 'package:dog_world/global/widgets/loading_screen.dart';
 import 'package:dog_world/park_catalog/domain/models/dog_park_entry_list_model.dart';
 import 'package:dog_world/park_catalog/domain/models/dog_park_entry_model.dart';
 import 'package:dog_world/park_catalog/domain/services/catalog_service.dart';
@@ -66,42 +68,10 @@ class _ParkCatalogState extends State<ParkCatalog> {
               );
               // TODO: Update error message
             } else if (snapshot.hasError) {
-              child = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.error_outline,
-                      color: Colors.red,
-                      size: 60,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Text('Error: ${snapshot.error}'),
-                    ),
-                  ],
-                ),
-              );
+              child = ErrorScreen(errorMessage: snapshot.error.toString());
               // TODO: Update progress message
             } else {
-              child = Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    SizedBox(
-                      width: 60,
-                      height: 60,
-                      child: CircularProgressIndicator(),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 16),
-                      child: Text('Awaiting result...'),
-                    ),
-                  ],
-                ),
-              );
+              child = const LoadingScreen();
             }
             return child;
           },

@@ -2,6 +2,8 @@ import 'package:dog_world/dog_park_info/domain/models/dog_park_info_model.dart';
 import 'package:dog_world/dog_park_info/domain/services/dog_park_info_service.dart';
 import 'package:dog_world/dog_park_info/widgets/comment_section.dart';
 import 'package:dog_world/dog_park_info/widgets/park_info.dart';
+import 'package:dog_world/global/widgets/error_screen.dart';
+import 'package:dog_world/global/widgets/loading_screen.dart';
 import 'package:flutter/material.dart';
 
 class DogParkInfo extends StatefulWidget {
@@ -69,42 +71,10 @@ class _DogParkInfoState extends State<DogParkInfo> {
 
             // TODO: Update error message
           } else if (snapshot.hasError) {
-            child = Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.error_outline,
-                    color: Colors.red,
-                    size: 60,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16),
-                    child: Text('Error: ${snapshot.error}'),
-                  ),
-                ],
-              ),
-            );
+            child = ErrorScreen(errorMessage: snapshot.error.toString());
             // TODO: Update progress message
           } else {
-            child = Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
-                  SizedBox(
-                    width: 60,
-                    height: 60,
-                    child: CircularProgressIndicator(),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 16),
-                    child: Text('Awaiting result...'),
-                  ),
-                ],
-              ),
-            );
+            child = const LoadingScreen();
           }
           return child;
         },
