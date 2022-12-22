@@ -13,7 +13,6 @@ class HttpDogParksRepository extends DogParksRepository {
   @override
   Future<DogParkListModel> getDogParks() async {
     final response = await http.get(
-      // Uri.http(dogParksServiceURL, getDogParksApiPath),
       Uri(
         scheme: 'http',
         host: dogParksServiceURL,

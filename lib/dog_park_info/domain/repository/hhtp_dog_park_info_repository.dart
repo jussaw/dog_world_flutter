@@ -16,9 +16,6 @@ class HttpDogParkInfoRepository extends DogParkInfoRepository {
   Future<DogParkInfoModel> getDogParkInfo(int parkId) async {
     // final headers = {'parkid': parkId.toString()};
     final response = await http.get(
-      // Uri.http(dogParksServiceURL, getDogParkInfoApiPath),
-      // headers: headers,
-      // );
       Uri(
           scheme: 'http',
           host: dogParksServiceURL,
